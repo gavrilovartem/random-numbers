@@ -29,21 +29,6 @@ function createWindow () {
     win = null
   })
 }
-/*
-global.getNumbers = function() {
-  const { net } = require('electron');
-  const request = net.request(tornadoAppUrl + '/random');
-  console.log("something happen");
-  request.on('response', (response) => {
-    response.on('data', (chunk) => {
-     global.sharedObj = chunk;
-    })
-    response.on('error', (error) => {
-      console.log(`ERROR: ${JSON.stringify(error)}`);
-    })
-  })
-}
-*/
 const { ipcMain } = require('electron')
 const fetch = require('electron-fetch').default
 
@@ -82,6 +67,3 @@ app.on('activate', () => {
     createWindow()
   }
 })
-
-// В этом файле вы можете включить код другого основного процесса 
-// вашего приложения. Можно также поместить их в отдельные файлы и применить к ним require.
