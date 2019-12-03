@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Привет мир!</title>
+  <!-- https://electronjs.org/docs/tutorial/security#csp-meta-tag -->
+  <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
+  <script>
+    const { ipcRenderer } = require('electron')
+    ipcRenderer.send('asynchronous-message', 'ping numbers')
+    ipcRenderer.on('asynchronous-reply', (event, arg) => {
+      const numbersString = arg.message;
+      const numbersArray = numbersString.split(',');
+      const sortedArray = numbersArray.sort(function compareNumbers(a, b) {
+        return a - b;
+      });
+      const numbersEl = document.getElementById("numbers");
+      numbersEl.innerHTML = sortedArray.join(' ');
+    })
+  </script>
+</head>
+
+<body>
+  <h1>Привет мир!</h1>
+  Набор случайных чисел от 1 до 100, отсортированный с помощью Electron:
+  <p id="numbers"></p>
+
+</body>
+
+</html>
