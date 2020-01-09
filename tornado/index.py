@@ -11,7 +11,7 @@ class RandomHandler(tornado.web.RequestHandler):
     def get(self):
         randArray = []
         for i in range(1, 7):
-            randArray.append(random.randrange(1, 100, 1))
+            randArray.append(random.randrange(1, 200, 1))
         resultString = ','.join(map(str, randArray))
         self.write({'message': resultString})
 
